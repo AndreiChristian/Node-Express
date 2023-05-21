@@ -24,9 +24,21 @@ app.use((req, res, next) => {
 
 app.use("/feed", feedRoutes);
 
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error.message;
+
+  res.status(status).json({ message: message });
+});
+
 mongoose
+
   .connect(
     `mongodb+srv://${username}:${password}@learningmern.nqcra7u.mongodb.net/messages?retryWrites=true&w=majority`
   )
-  .then((result) => app.listen(8080))
+  .then((result) => {
+    console.log("Connected to MongoDB");
+    app.listen(8080);
+  })
   .catch((err) => console.log(err));
