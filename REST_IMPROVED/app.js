@@ -1,5 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
 
 const app = express();
 
@@ -19,4 +24,9 @@ app.use((req, res, next) => {
 
 app.use("/feed", feedRoutes);
 
-app.listen(8080);
+mongoose
+  .connect(
+    `mongodb+srv://${username}:${password}@learningmern.nqcra7u.mongodb.net/messages?retryWrites=true&w=majority`
+  )
+  .then((result) => app.listen(8080))
+  .catch((err) => console.log(err));
