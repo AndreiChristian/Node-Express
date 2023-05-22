@@ -1,7 +1,5 @@
 const { Pool } = require("pg");
 
-require("dotenv").config();
-
 const pool = new Pool({
   user: process.env.PGUSER,
   host: process.env.PGHOST,
@@ -10,7 +8,8 @@ const pool = new Pool({
   port: process.env.PGPORT,
 });
 
-pool.query('SELECT NOW()', (err, res) => {
-    console.log(err, res)
-    pool.end()
-  })
+module.exports = {
+  query: (text, params, callback) => {
+    return pool.query(text, params, callback);
+  },
+};
