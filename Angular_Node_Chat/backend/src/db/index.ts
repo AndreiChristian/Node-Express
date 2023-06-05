@@ -1,11 +1,19 @@
 import { Pool } from "pg";
+import dotenv from "dotenv";
+dotenv.config();
+
+const { DBUSER, DBHOST, DBPORT, DBNAME, DBPASSWORD } = process.env;
+
+console.table({ DBHOST, DBUSER, DBPORT, DBNAME, DBPASSWORD });
 
 const pool = new Pool({
-  user: "dbuser",
-  host: "database.server.com",
-  database: "mydb",
-  password: "secretpassword",
-  port: 3211,
+  user: DBUSER,
+  host: DBHOST,
+  database: DBNAME,
+  password: DBPASSWORD,
+  port: +DBPORT!,
 });
 
-export const query = (text: string, params: any[]) => pool.query(text, params);
+export const db = {
+  query: (text: string, params: any[]) => pool.query(text, params),
+};
