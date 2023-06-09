@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vh;
+  height: 10vh;
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.2);
+  width: 100vw;
+}
+
+.neumorphic-input,
+.neumorphic-button {
+  border: none;
+  outline: none;
+  background-color: #333;
+  color: #ccc;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+.neumorphic-input {
+
+  width: 70%;
+
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
+    -3px -3px 5px rgba(255, 255, 255, 0.1);
+}
+
+.neumorphic-button {
+  cursor: pointer;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
+    -3px -3px 5px rgba(255, 255, 255, 0.1);
+}
+
+.neumorphic-input:focus,
+.neumorphic-button:focus {
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.1);
+}

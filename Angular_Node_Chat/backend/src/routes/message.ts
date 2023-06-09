@@ -1,15 +1,11 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 
 const router = Router();
 
-router.post("/", (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { name } = req.body;
+import { getMessages, postMessage } from "../controllers/message";
 
-    res.status(201).json({ name });
-  } catch (err) {
-    console.log(err);
-  }
-});
+router.get("/messages", getMessages);
+
+router.post("/messages", postMessage);
 
 export default router;

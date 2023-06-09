@@ -1,7 +1,5 @@
 <h1>{{connected}}</h1>
 
-<div class *ngIf="messages.length === 0">No messages yet</div>
-
-<div *ngFor="let m of messages">
+<div *ngFor="let m of (messages$ | async)">
   {{m.body}}
 </div>

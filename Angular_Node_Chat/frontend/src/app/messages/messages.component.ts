@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Message, SocketMessage } from './models/message';
 import { io } from 'socket.io-client';
 import { MessagesService } from './messages.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -11,23 +12,12 @@ import { MessagesService } from './messages.service';
 export class MessagesComponent implements OnInit {
   connected = false;
 
-  messages: Message[] = [];
-
-  socket = io('http://localhost:3000', {
-    autoConnect: false,
-  });
+  messages$: Observable<Message[]>;
 
   constructor(private messagesService: MessagesService) {}
 
   ngOnInit(): void {
-    this.socket.on('connect', () => {
-      this.connected = true;
-    });
-
-    this.socket.on('messages', (data: SocketMessage) => {
-      if (data.action == 'create') {
-        this.messages.push(data.message);
-      }
-    });
+    this.messagesService.getMessages();
+    this.messages$ = this.messagesService.messages$;
   }
 }
