@@ -22,13 +22,6 @@ app.use(express.json() as RequestHandler);
 
 app.use("/api", authRouter);
 
-mongoose
-  .connect(process.env.DBURL || "")
-  .then((result) => {
-    app.listen(3000, () => {
-      console.log("Connected to the db and started app on port 3000");
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+app.listen(3000, () => {
+  console.log("Connected to the db and started app on port 3000");
+});
