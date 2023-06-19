@@ -8,10 +8,20 @@
 
 .sidenav .mat-toolbar {
   background: inherit;
+  gap: 2vw;
 }
 
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.container {
+  box-sizing: border-box;
+  padding: 5vh;
 }

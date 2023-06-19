@@ -11,7 +11,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar color="primary">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -20,8 +20,16 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>MyApp</span>
+      <span routerLink="/">MyApp</span>
+      <div class="spacer"></div>
+      <button mat-button routerLink="/products">Products</button>
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/signup">Signup</button>
+      <button mat-button routerLink="/signup">Logout</button>
+
     </mat-toolbar>
-    <!-- Add Content Here -->
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
