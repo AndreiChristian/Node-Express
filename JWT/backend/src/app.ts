@@ -19,3 +19,10 @@ mongoose
   .catch((err) => {
     console.error(err);
   });
+
+//   signup GET
+//   login GET
+//   logout GET
+
+//   login POST
+//   signup POST
