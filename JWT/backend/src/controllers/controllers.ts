@@ -6,6 +6,7 @@ export const login = async (
   next: NextFunction
 ) => {
   try {
+    res.json("login");
   } catch (err) {
     console.log(err);
     next();
@@ -18,6 +19,7 @@ export const signup = async (
   next: NextFunction
 ) => {
   try {
+    res.json("signup");
   } catch (err) {
     console.log(err);
     next();
@@ -30,6 +32,7 @@ export const logout = async (
   next: NextFunction
 ) => {
   try {
+    res.json("logout");
   } catch (err) {
     console.log(err);
     next();

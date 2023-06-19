@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  res.json("Hello");
-});
+import authRouter from "./routes/authRoutes";
+
+app.use("/api", authRouter);
 
 mongoose
   .connect(
@@ -19,10 +19,3 @@ mongoose
   .catch((err) => {
     console.error(err);
   });
-
-//   signup GET
-//   login GET
-//   logout GET
-
-//   login POST
-//   signup POST
